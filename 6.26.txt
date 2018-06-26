@@ -1,0 +1,165 @@
+#include <stdio.h>
+#include <string.h>
+#define N 100
+struct worker
+{
+	char gh[10];//*工号
+	char xm[10];//*姓名
+	float gw;//*岗位工资
+	float xj;//*薪级工资
+	float zw;//*职务津贴
+	float jx;//*绩效工资
+	float yf;//*应发工资
+	float gr;//*个人所得税
+	float sf;//*实发工资
+}
+
+int main()
+{
+    void find(struct worker work[10],int a);//*查询职工信息
+    void modify(struct worker work[10],int a);//*修改职工信息
+	int add(struct worker work[10],int a);//*添加职工信息
+    void del(struct worker work[10],int a);//*删除职工信息
+	void write(struct worker work[10],int a);//*保存职工信息
+	void list(struct worker work[10],int a);//*浏览职工信息
+	struct worker work[N],*p=work;
+	int a=N,select;          /*printf("请输入职工人数:");scanf ("%d",&a);*/
+	printf("您是首次登陆本系统，请输入员工信息：\n") ;
+	a=add(p,a);
+	do     //*打印菜单项
+	{
+		printf("\n **********职工工资管理系统********** \n");
+		printf("\n 1.查询职工工资 \n");
+		printf("\n 2.修改职工工资 \n");
+		printf("\n 3.添加职工工资 \n");
+		printf("\n 4.删除职工工资 \n");
+		printf("\n 5.保存职工信息 \n");
+        printf("\n 6.浏览职工信息 \n");
+		printf("\n 0.退出    系统 \n");
+		printf("\n ************************************ \n");
+		printf("\n 请输入您的选择 \n");
+		scanf("%d",&select);
+		switch(select)
+		{
+		case 1:
+			find(p,a);
+			break;
+		case 2:
+			modify(p,a);
+			break;
+		case 3:
+			printf("系统已有该职工信息，再次输入将覆盖记录，是否确定（请输入'y'或'n'）");
+				getchar();
+			if((getchar()=='y')||getchar()=='Y')
+				a=add(p,a);
+		case 4:
+			del(p,a);
+			break;
+        case 5:
+			write(p,a);
+			break;
+        case 6:
+			list(p,a);
+			break;    
+		case 0:
+			printf("要继续操作吗？（请输入'y'或'n'）：");
+		}
+		getchar();
+		if((getchar()=='y')||getchar()=='Y')
+			break;
+	}
+while(1);
+printf("职工工资管理系统本次运行结束\n");
+	return 0;
+}
+void read(struct worker work[10],int a)//*读取职工信息
+{
+	FILE*fp;
+	char ch;
+	if((fp=fopen("gz.dat","w"))==NULL
+	{
+		print("打不开文件\n");
+		fclose();
+		exit(0);
+
+	}
+}
+
+int write()//*保存职工信息
+{
+	FILE *fp ;
+    fp=fopen("gz.dat" , "wb" );
+    if ( fp == NULL )
+    {
+		return -1 ;
+	}
+    fwrite( (char*)zggz , sizeof(struct zggz), n , fp ); 
+	fclose(fp);
+}; 
+
+
+float grsds(float yfgz)//*计算个人所得税
+{
+	for(i = 1; i < n+1; i++)
+	{
+		if(yfgz <= 500)
+		{
+			return 5;
+		}
+		else if(yfgz > 500 && yfgz <= 2000)
+		{
+			return 10;
+		}
+		else if(yfgz > 2000 && yfgz <= 5000)
+		{
+			return 15;
+		}
+		else if(yfgz > 5000 &&yfgz <= 20000)
+		{
+			return 20;
+		}
+		else if(yfgz > 20000 && yfgz <= 40000)
+		{
+			return 25;
+		}
+		else if(yfgz > 40000 && yfgz <= 60000)
+		{
+			return  30;
+		}else if(yfgz > 60000 && yfgz <= 80000)
+		{
+			return 35;
+		}
+		else if(yfgz > 80000 && yfgz <= 100000)
+		{
+			return 40;
+		}else 
+		{
+			return 45;
+		}
+	}
+}
+
+
+
+void find(struct worker work[10],int a)//*查询职工信息
+{
+}
+
+void modify(struct worker work[10],int a)//*修改职工信息
+{
+}
+
+int add(struct worker work[10],int a)//*添加职工信息
+{
+}
+
+void del(struct worker work[10],int a)//*删除职工信息
+{
+}
+
+void write(struct worker work[10],int a)//*保存职工信息
+{
+}
+void list(struct worker work[10],int a)//*浏览职工信息
+{
+}
